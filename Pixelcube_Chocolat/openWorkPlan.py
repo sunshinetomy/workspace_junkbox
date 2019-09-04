@@ -1,14 +1,8 @@
-﻿import os
-import svn.local
+﻿import webbrowser
 
-FILE = "라인팝쇼콜라_개발일정_190902.xlsx"
-PATH = "D:\\workspace_L\\002 서비스 플랜"
+url_workPlan = "https://docs.google.com/spreadsheets/d/1y_vz_UhUjQ4ETAlpleL3wLnQ0zbfnjbBJaFeCRHzntw/edit#gid=427079604"
+url_serverSorkPlan = "https://docs.google.com/spreadsheets/d/1VyQ1Io9zFZe_ahIRWCVb2tIFEmnSj_6EpDLKMQFYLeI/edit#gid=229909661"
 
-r = svn.local.LocalClient( PATH )
-r.update()
+webbrowser.open( url_workPlan )
 
-fullPath = PATH + "\\" + FILE
-
-cmd = "\"" + fullPath + "\""
-os.system( cmd )
-
+webbrowser.open( url_serverSorkPlan )
