@@ -3,69 +3,67 @@ import shutil
 import svn.local
 from inputAndConfirm import inputAndConfirm
 
-###### CONST
+
+############ Values
 COMMIT_TYPES = ['modified']
-SRC_PATH = 'D:\\workspace_junkbox_temp'
-DST_PATH = 'D:\\workspace_junkbox_temp\\Test_Repository_Trunk'
 
-#SRC_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
-#DST_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
-FILE_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
+#SRC_PATH = 'D:\\workspace_junkbox_temp'
+#DST_PATH = 'D:\\workspace_junkbox_temp\\Test_Repository_Trunk'
+#FILE_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
 
-#SRC_PATH = "C:\\workspace_L\\ProjectL_Client_3.4.0"
-#SRC_PATH = "C:\\workspace_L\\ProjectL_Client_3.4.0"
-#DST_PATH = "C:\\workspace_L\\ProjectL_Client_3.4.0\\Assets\\AssetBundles\\Localization"
-#DST_FILES = { "Chinese.txt", "English.txt", 
+SRC_PATH = "D:\\workspace_L\\004 공용 데이터\\1.번역"
+DST_PATH = "C:\\workspace_L\\ProjectL_Client_3.4.0\\Assets\\AssetBundles\\Localization"
+FILE_LIST = ['Chinese.txt', 'English.txt', 'Japanese.txt', 'Korean.txt', 'Thai.txt']
 
 
-###### Message Input
+
+############ Message Input
 message = inputAndConfirm()
 
 if 'auto' == message:
 	message = "[정경진]\n - 번역 데이터 갱신"
 
+
 	
 ###### Repository Update	
-#srcR = svn.local.LocalClient( DST_PATH )
-#srcR.update()
+srcR = svn.local.LocalClient( SRC_PATH )
+srcR.update()
 dstR = svn.local.LocalClient( DST_PATH )
 dstR.update()
+
+
 	
 ###### Data Copy
-#for idx, val in enumerate( FILE_LIST ):
-	#src = SRC_PATH + '\\' + FILE_LIST[idx]
-	#dst = DST_PATH + '\\' + FILE_LIST[idx]
-	#shutil.copyfile( src, dst )
-	
 for val in FILE_LIST:
 	src = SRC_PATH + '\\' + val
 	dst = DST_PATH + '\\' + val
 	shutil.copyfile( src, dst )
-	print( src )
-	print( dst )
 
-
+	
 
 ### Data Commit
-fileList = []
+commitList = []
 for e in dstR.status():
-	print( e.name )
-	print( e.type_raw_name )
-	
 	if COMMIT_TYPES.__contains__( e.type_raw_name ):
-		fileList.append( e.name )
+		commitList.append( e.name )
 	else:
 		continue
-		
-#dstR.commit( message, fileList )
 
-for v in fileList:
-	print( fileList )
-
+print( 'commit list' )
+for v in commitList:
+	print( v )
 		
+#dstR.commit( message, commitList )
+
 input("Press enter to exit")
 	
 
 	
-
+########################### TEST_CODE
+#SRC_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
+#DST_LIST = ['test_01.txt', 'test_02.txt', 'test_03.txt']
+#for idx, val in enumerate( SRC_LIST ):
+	#src = SRC_PATH + '\\' + SRC_LIST[idx]
+	#dst = DST_PATH + '\\' + DST_LIST[idx]
+	#shutil.copyfile( src, dst )
 	
