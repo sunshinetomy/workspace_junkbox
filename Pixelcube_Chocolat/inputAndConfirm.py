@@ -1,9 +1,11 @@
-﻿def inputTexts():	
+﻿def inputTexts():
+	print( ''''text input' or 'a' ('a' == 'auto')''' )
+	
 	inputText = ""
 	while True:
 		input_str = input(">")
 		if input_str == "a":	# auto
-			return "a"
+			return "auto"
 			
 		if input_str == "":
 			break
@@ -24,7 +26,7 @@ def inputAndConfirm():
 	while False == isOk:
 		result = inputTexts()
 		
-		if result == "a":		# auto
+		if result == "auto":		# auto
 			return "auto"
 			
 		if result == "":
