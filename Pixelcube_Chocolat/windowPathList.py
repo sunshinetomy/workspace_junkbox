@@ -22,6 +22,8 @@ Python.File="C:\Python34\python.exe" "%1" %*
 
 PATH 에도 실행 스크립트 경로 추가 필요!!
 
+액세스가 거부되었습니다. ( Wind+CMD => Shift + Ctrl + Enter )
+
 from https://soooprmx.com/archives/6471
 '''
 
